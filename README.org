@@ -1,8 +1,7 @@
 * Pandoc for Emacs
 
-=pandoc.el= is a simple interface for [[http://pandoc.org/][Pandoc]].
+=pandoc.el= is a simple interface for [[http://pandoc.org/][Pandoc]].  Pandoc supports many format (includes [[https://en.wikipedia.org/wiki/EPUB][EPUB]], [[https://en.wikipedia.org/wiki/Office_Open_XML][docx]], [[https://en.wikipedia.org/wiki/Markdown][Markdown]] and [[http://orgmode.org/][Org mode]]).
 
-** Functions
-
-*** =pandoc-open-eww=
-Render file using [[https://www.gnu.org/software/emacs/manual/html_node/eww/index.html#Top][Emacs Web Wowser]] and Pandoc.  Pandoc supports many format (includes [[https://en.wikipedia.org/wiki/EPUB][EPUB]], [[https://en.wikipedia.org/wiki/Office_Open_XML][docx]], [[https://en.wikipedia.org/wiki/Markdown][Markdown]] and [[http://orgmode.org/][Org mode]]).
+** Commands
+*** =M-x pandoc-open-eww=
+Render file using [[https://www.gnu.org/software/emacs/manual/html_node/eww/index.html#Top][Emacs Web Wowser]] and Pandoc.

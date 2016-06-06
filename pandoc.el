@@ -51,6 +51,18 @@
                  (const :tag "Markdown.pl" 'markdown-strict)
                  string))
 
+(defun pandoc--tmp-file (file-path)
+  "Return path to temp file by `FILE-PATH'."
+  (concat temporary-file-directory "emacs-pandoc_"
+          (file-name-nondirectory file-path) ".html"))
+
+(defun pandoc-markdown-dialect ()
+  "Return markdown dialect/variable name string."
+  (if (symbolp pandoc-markdown-default-dialect)
+      (symbol-name pandoc-markdown-default-dialect)
+    pandoc-markdown-default-dialect))
+
+;;;###autoload
 (defun pandoc-convert-file (file-path input-format output-format)
   "Convert `FILE-PATH' as `INPUT-FORMAT' to `OUTPUT-FORMAT'."
   (let ((args (list "-t" output-format "--" file-path)))
@@ -60,6 +72,7 @@
       (apply 'call-process-region (point-min) (point-max) "pandoc" t t nil args)
       (buffer-substring-no-properties (point-min) (point-max)))))
 
+;;;###autoload
 (defun pandoc-convert-stdio (body input-format output-format)
   "Convert `BODY' as `INPUT-FORMAT' to `OUTPUT-FORMAT'."
   (let ((args (list "-f" input-format "-t" output-format)))
@@ -68,15 +81,7 @@
       (apply 'call-process-region (point-min) (point-max) "pandoc" t t nil args)
       (buffer-substring-no-properties (point-min) (point-max)))))
 
-;; (defun pandoc--detect-format (buffer)
-;;   "Detect input format by `BUFFER'."
-;;   )
-
-(defun pandoc--tmp-file (file-path)
-  "Return path to temp file by `FILE-PATH'."
-  (concat temporary-file-directory "emacs-pandoc_"
-          (file-name-nondirectory file-path) ".html"))
-
+;;;###autoload
 (defun pandoc-open-eww (file)
   "Render `FILE' using EWW and Pandoc."
   (interactive "F")

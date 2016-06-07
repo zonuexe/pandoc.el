@@ -91,6 +91,7 @@
                          (and (buffer-file-name)
                               (not (file-remote-p (buffer-file-name)))))))
     (with-current-buffer (find-file-noselect tmp-file)
+      (delete-region (point-min) (point-max))
       (insert (if is-localfile
                   (pandoc-convert-file file nil "html")))
       (save-buffer))

@@ -4,7 +4,14 @@
 <a href="http://stable.melpa.org/#/pandoc"><img alt="MELPA stable: pandoc" src="http://stable.melpa.org/packages/pandoc-badge.svg"></a>
 #+END_HTML
 
-=pandoc.el= is a simple interface for [[http://pandoc.org/][Pandoc]].  Pandoc supports many format (includes [[https://en.wikipedia.org/wiki/EPUB][EPUB]], [[https://en.wikipedia.org/wiki/Office_Open_XML][docx]], [[https://en.wikipedia.org/wiki/Markdown][Markdown]] and [[http://orgmode.org/][Org mode]]).
+=pandoc.el= is a simple interface for [[http://pandoc.org/][Pandoc]].
+
+Pandoc supports many format (includes [[https://en.wikipedia.org/wiki/EPUB][EPUB]], [[https://en.wikipedia.org/wiki/Office_Open_XML][docx]], [[https://en.wikipedia.org/wiki/Markdown][Markdown]] and [[http://orgmode.org/][Org mode]]).
+
+** Install
+- [[http://pandoc.org/][Pandoc]] (required, see [[http://pandoc.org/installing.html][Pandoc - Installing]])
+- [[http://www.winfield.demon.nl/][Antiword]] (optional, support [[https://en.wikipedia.org/wiki/Doc_(computing)][MS Word .doc]] format)
+- [[https://en.wikipedia.org/wiki/File_(command)][=file= command]] (optional)
 
 ** Commands
 *** =M-x pandoc-open-eww=

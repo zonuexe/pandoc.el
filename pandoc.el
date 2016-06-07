@@ -63,14 +63,37 @@
     pandoc-markdown-default-dialect))
 
 ;;;###autoload
+(defun pandoc-antiword (file)
+  "Convert `FILE' to DocBook using Antiword."
+  (with-temp-buffer
+    (call-process "antiword" nil t nil "-x" "db" file)
+    (buffer-substring-no-properties (point-min) (point-max))))
+
+(defun pandoc--use-antiword (file)
+  "Return t if `FILE' is MS Word .doc format."
+  ;; require `file' command.
+  (and
+   (executable-find "antiword")
+   (executable-find "file")
+   (string= "application/msword"
+            (with-temp-buffer
+              (call-process "file" nil t nil "-b" "--mime-type" "--" file)
+              (goto-char (point-min))
+              (search-forward "\n")
+              (replace-match  "")
+              (buffer-substring-no-properties (point-min) (point-max))))))
+
+;;;###autoload
 (defun pandoc-convert-file (file-path input-format output-format)
   "Convert `FILE-PATH' as `INPUT-FORMAT' to `OUTPUT-FORMAT'."
-  (let ((args (list "-t" output-format "--" file-path)))
-    (unless (null input-format)
-      (setq args (append (list "-f" input-format) args)))
-    (with-temp-buffer
-      (apply 'call-process-region (point-min) (point-max) "pandoc" t t nil args)
-      (buffer-substring-no-properties (point-min) (point-max)))))
+  (if (pandoc--use-antiword file-path)
+      (pandoc-convert-stdio (pandoc-antiword file-path) "docbook" output-format)
+    (let ((args (list "-t" output-format "--" file-path)))
+      (unless (null input-format)
+        (setq args (append (list "-f" input-format) args)))
+      (with-temp-buffer
+        (apply 'call-process-region (point-min) (point-max) "pandoc" t t nil args)
+        (buffer-substring-no-properties (point-min) (point-max))))))
 
 ;;;###autoload
 (defun pandoc-convert-stdio (body input-format output-format)

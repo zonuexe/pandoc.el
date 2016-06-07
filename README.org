@@ -9,3 +9,7 @@
 ** Commands
 *** =M-x pandoc-open-eww=
 Render file using [[https://www.gnu.org/software/emacs/manual/html_node/eww/index.html#Top][Emacs Web Wowser]] and Pandoc.
+
+** Customize
+*** =(pandoc-turn-on-advice-eww)=
+When do =M-x eww-open-file= using Pandoc if the file is not HTML.

@@ -1,4 +1,8 @@
 * Pandoc for Emacs
+#+BEGIN_HTML
+<a href="http://melpa.org/#/pandoc"><img alt="MELPA: pandoc" src="http://melpa.org/packages/pandoc-badge.svg"></a>
+<a href="http://stable.melpa.org/#/pandoc"><img alt="MELPA stable: pandoc" src="http://stable.melpa.org/packages/pandoc-badge.svg"></a>
+#+END_HTML
 
 =pandoc.el= is a simple interface for [[http://pandoc.org/][Pandoc]].  Pandoc supports many format (includes [[https://en.wikipedia.org/wiki/EPUB][EPUB]], [[https://en.wikipedia.org/wiki/Office_Open_XML][docx]], [[https://en.wikipedia.org/wiki/Markdown][Markdown]] and [[http://orgmode.org/][Org mode]]).
 

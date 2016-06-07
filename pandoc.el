@@ -7,7 +7,7 @@
 ;; Version: 0.0.1
 ;; Keywords: documentation markup converter
 ;; Homepage: https://github.com/zonuexe/pandoc.el
-;; Package-Requires: ((emacs "24"))
+;; Package-Requires: ((emacs "24.4"))
 
 ;; This file is NOT part of GNU Emacs.
 
@@ -95,6 +95,22 @@
                   (pandoc-convert-file file nil "html")))
       (save-buffer))
     (eww-open-file tmp-file)))
+
+(defun pandoc--eww-open-wrapper (file)
+  "Render `FILE' using Pandoc if file is not HTML."
+  (if (string-match "\\.html?\\'" file)
+      nil
+    (pandoc-open-eww file)))
+
+;;;###autoload
+(defun pandoc-turn-on-advice-eww (&optional enable)
+  "When `eww-open-file' using Pandoc if the file is not HTML.
+
+Remove advice if `ENABLE' equals `-1'."
+  (if (eq -1 enable)
+      (advice-remove 'eww-open-file #'pandoc--eww-open-wrapper)
+    (advice-add 'eww-open-file :before-until #'pandoc--eww-open-wrapper)
+    t))
 
 (provide 'pandoc)
 ;;; pandoc.el ends here

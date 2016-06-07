@@ -11,7 +11,7 @@ Pandoc supports many format (includes [[https://en.wikipedia.org/wiki/EPUB][EPUB
 ** Install
 - [[http://pandoc.org/][Pandoc]] (required, see [[http://pandoc.org/installing.html][Pandoc - Installing]])
 - [[http://www.winfield.demon.nl/][Antiword]] (optional, support [[https://en.wikipedia.org/wiki/Doc_(computing)][MS Word .doc]] format)
-- [[https://en.wikipedia.org/wiki/File_(command)][=file= command]] (optional)
+- [[https://en.wikipedia.org/wiki/File_(command)][file command]] (optional)
 
 ** Commands
 *** =M-x pandoc-open-eww=

@@ -5,7 +5,7 @@
 ;; Author: USAMI Kenta <tadsan@zonu.me>
 ;; Created: 6 Jun 2016
 ;; Version: 0.0.1
-;; Keywords: documentation markup converter
+;; Keywords: hypermedia documentation markup converter
 ;; Homepage: https://github.com/zonuexe/pandoc.el
 ;; Package-Requires: ((emacs "24.4"))
 
